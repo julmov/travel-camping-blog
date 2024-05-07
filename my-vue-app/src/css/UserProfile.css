@@ -1,0 +1,11 @@
+main{
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.user-profile{
+height: 100vh;
+width: calc(100% - 300px);
+background-color: aquamarine;
+}
