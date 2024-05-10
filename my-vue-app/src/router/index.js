@@ -4,11 +4,13 @@ import HomePage from "../components/HomePage.vue";
 import RegisterPage from "../components/RegisterPage.vue";
 import UserProfile from "../components/UserProfile.vue";
 
+
 const routes = [
   { path: "/", component: HomePage, meta: { requiresAuth: true } },
   { path: "/login", component: LoginPage },
   { path: "/register", component: RegisterPage },
   { path: "/profile", component: UserProfile },
+  { path: "/home", component: HomePage },
   // Add more routes as needed
 ];
 

@@ -2,7 +2,7 @@
   <div class="user-profile">
     <div class="background-image"> 
     </div>
-      <div class="avatar"><img src="../assets/avatar.jpg" alt="Avatar"></div>
+      <div class="avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
       <div class="profile-info-block">
       <div>
       <h2>John Doe</h2>

@@ -25,6 +25,7 @@ export default {
 </script>
 
 <style>
+@import "./style.css"; 
 /* Component styles (scoped or global) */
 #app {
   font-family: Arial, sans-serif;
