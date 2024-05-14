@@ -3,6 +3,7 @@ import LoginPage from "../components/LoginPage.vue";
 import HomePage from "../components/HomePage.vue";
 import RegisterPage from "../components/RegisterPage.vue";
 import UserProfile from "../components/UserProfile.vue";
+import CreatePost from "../components/CreatePost.vue";
 
 
 const routes = [
@@ -11,6 +12,7 @@ const routes = [
   { path: "/register", component: RegisterPage },
   { path: "/profile", component: UserProfile },
   { path: "/home", component: HomePage },
+  { path: "/create", component: CreatePost },
   // Add more routes as needed
 ];
 
