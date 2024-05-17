@@ -1,0 +1,19 @@
+.users {
+    width: 100%;
+    height: fit-content;
+    
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none; /* Hides the bullet points */
+  padding: 0; /* Removes default padding */
+  margin: 0; /* Removes default margin */
+  padding-left: 55px;
+  padding-right: 50px;
+}
+
+h1{
+    padding-left: 55px;
+}

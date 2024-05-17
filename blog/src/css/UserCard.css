@@ -1,0 +1,48 @@
+
+.user-card{
+    background-color: #7c797985;
+  height: 260px;
+  width: 210px;
+  margin: 5px;
+  margin-bottom: 50px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+}
+
+.user-card-img{
+  height: 70%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  background-color: antiquewhite;
+  
+}
+
+.user-gallery{
+   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+.buttons-profile{
+  display:flex;
+  flex-direction: row;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+.add-show-btn{
+  background: none;
+  border: solid 1px white;
+  margin: 3px;
+  border-radius: 10px;
+}
+
+.add-show-btn:hover {
+  background-color: #0056b3;
+}
+
+li {
+    list-style-type: none; /* Hides the bullet points */
+    padding: 0;
+}
