@@ -5,6 +5,10 @@ import RegisterPage from "../components/RegisterPage.vue";
 import UserProfile from "../components/UserProfile.vue";
 import CreatePost from "../components/CreatePost.vue";
 import UsersView from "../components/UsersView.vue";
+import PostById from "../components/PostById.vue";
+import UserById from "../components/UserById.vue";
+import PostsList from "../components/PostsList.vue";
+
 
 
 const routes = [
@@ -15,7 +19,14 @@ const routes = [
   { path: "/home", component: HomePage },
   { path: "/create", component: CreatePost },
   { path: "/users", component: UsersView },
-  // Add more routes as needed
+  { path: "/posts", component: PostsList },
+  { path: "/post/:id", component: PostById, name: "PostDetail", props: true },
+  {
+    path: "/user/:id",
+    name: "UserProfile",
+    component: UserById,
+    props: true
+  },
 ];
 
 const router = createRouter({

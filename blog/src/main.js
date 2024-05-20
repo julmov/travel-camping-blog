@@ -6,7 +6,9 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
-
+import CreateComment from "./components/CreateComment.vue";
+import FetchComments from "./components/FetchComments.vue";
+//import "./style.css"
 
 
 // Add the new solid icons to the library
@@ -16,6 +18,9 @@ library.add(fab);
 // Register the FontAwesomeIcon component globally
 const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
-
+app.component("CreateComment", CreateComment);
+app.component("FetchComments", FetchComments);
 app.use(router);
 app.mount("#app");
+
+export default app

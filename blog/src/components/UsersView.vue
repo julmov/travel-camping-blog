@@ -1,16 +1,14 @@
 <template>
-  
   <div class="users">
     <h1>Users</h1>
-
-      <ul class="user-list">
+    <ul class="user-list">
       <li v-for="user in users" :key="user.id" class="user-card">
-        <img src="../assets/avatar.jpg" alt="Avatar" class="user-card-img">
+        <img :src="user.avatar || defaultAvatar" alt="Avatar" class="user-card-img">
         <div class="user-details">
           <span class="user-nickname">{{ user.nickname }}</span>
           <div class="buttons-profile">
             <button class="add-show-btn">Add friend</button>
-            <button class="add-show-btn">Show profile</button>
+            <button class="add-show-btn" @click="goToUserProfile(user._id)">Show profile</button>
           </div>
         </div>
       </li>
@@ -20,13 +18,20 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
+// Reference to store user data
 const users = ref([]);
- let token = localStorage.getItem("token");
- console.log(token)
-    let token1 = JSON.parse(token);
-    let tokenValue = token1.token;
-    console.log(tokenValue)
+
+// Default avatar image
+const defaultAvatar = new URL('../assets/avatar.jpg', import.meta.url).href;
+
+// Retrieve token from local storage
+let token = localStorage.getItem('token');
+let token1 = token ? JSON.parse(token) : null;
+let tokenValue = token1 ? token1.token : null;
+
+const router = useRouter();
 
 const fetchUsers = async () => {
   try {
@@ -38,10 +43,13 @@ const fetchUsers = async () => {
     });
     const data = await response.json();
     users.value = data; // Update the users ref with fetched data
-    console.log(users)
   } catch (error) {
     console.error('Error fetching users:', error);
   }
+};
+
+const goToUserProfile = (userId) => {
+  router.push({ name: 'UserProfile', params: { id: userId } });
 };
 
 // Fetch users when the component is mounted

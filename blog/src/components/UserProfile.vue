@@ -1,64 +1,113 @@
 <template>
   <div class="user-profile">
-    <TopBanner />
-    <div class="background-image"></div>
-    <div class="avatar" @click="changeAvatar">
-      <img src="../assets/avatar.jpg" alt="Avatar" id="avatar">
+    <div 
+      class="background-image" 
+      @dblclick="showBackgroundUploadCard"
+      :style="{ backgroundImage: `url(${user.background || defaultBackground})`, backgroundSize: 'cover', backgroundPosition: 'center' }"
+      id="background"></div>
+    <div class="avatar" @dblclick="showUploadCard">
+      <img :src="user.avatar || defaultAvatar" alt="Avatar" id="avatar">
     </div>
     <div class="profile-info-block">
       <div>
-        <h2>John Doe</h2>
-        <p>@nickname</p>
+        <h2>{{ user.nickname }}</h2>
+        <p>@{{ user.login }}</p>
       </div>
       <div class="posts-and-followers">
-        <p>posts</p>
+        <p><span>{{ posts }}</span> posts</p>
         <p>followers</p>
         <p>following</p>
       </div>
-      <button id="followBtn">Follow</button>
+      <button id="followBtn" @click="showEditCard">Settings</button>
     </div>
-    <p>Adipisci porro ipsum laudantium consectetur, recusandae blanditiis consequatur eveniet earum quasi autem quod corporis eligendi et repudiandae sapiente delectus quisquam ipsam ea. Excepturi facilis repellendus odit labore expedita recusandae dolorum est, eveniet dolorem laudantium tenetur quo temporibus! Modi, accusantium tempore nobis aliquid laudantium magnam quod sunt cupiditate, quasi et, facere ad possimus perspiciatis eos sed ipsum molestiae aperiam? Vero voluptatum illo quo possimus.</p>
+    <p>{{ user.description }}</p>
+
+    <!-- Upload Avatar Component -->
+    <UploadAvatar v-if="showCard" @close="closeUploadCard" />
+    <UploadBackground v-if="showBackgroundCard" @close="closeBackgroundUploadCard" @upload-success="fetchUserData" />
+    <EditProfile v-if="isEditCardVisible" :currentUsername="user.nickname" :currentDescription="user.description" @close="closeEditCard" @update-success="fetchUserData" />
   </div>
 </template>
 
 <script>
-import TopBanner from '../components/TopBanner.vue';
+import UploadAvatar from './UploadAvatar.vue';
+import UploadBackground from './UploadBackground.vue';
+import EditProfile from './EditProfile.vue';
+
 export default {
   name: 'UserProfile',
   components: {
-    TopBanner
+    UploadAvatar,
+    UploadBackground,
+    EditProfile
+  },
+  data() {
+    return {
+      showCard: false,
+      showBackgroundCard: false,
+      isEditCardVisible: false, // renamed from showEditCard
+      user: {
+        login: '',
+        nickname: '',
+        description: '',
+        avatar: '',
+        background: ''
+      },
+      defaultAvatar: new URL('../assets/avatar.jpg', import.meta.url).href,
+      defaultBackground: new URL('../assets/default-background.jpg', import.meta.url).href,
+      posts: 0
+    };
   },
   methods: {
-    changeAvatar() {
-      // Implement logic to upload a new avatar image
-      // For example, you can show a modal or navigate to a new route for uploading
-      // Here you can make an API call to upload the new avatar
-      // Example:
-      // fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/upload-avatar', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
-      //   },
-      //   body: JSON.stringify({
-      //     avatar: 'NEW_IMAGE_URL'
-      //   })
-      // })
-      // .then(response => {
-      //   if (response.ok) {
-      //     // Handle success
-      //   } else {
-      //     // Handle error
-      //   }
-      // })
-      // .catch(error => {
-      //   console.error('Error uploading avatar:', error);
-      // });
+    showUploadCard() {
+      this.showCard = true;
+    },
+    closeUploadCard() {
+      this.showCard = false;
+    },
+    showBackgroundUploadCard() {
+      this.showBackgroundCard = true;
+    },
+    closeBackgroundUploadCard() {
+      this.showBackgroundCard = false;
+    },
+    showEditCard() {
+      this.isEditCardVisible = true; // updated to use isEditCardVisible
+    },
+    closeEditCard() {
+      this.isEditCardVisible = false; // updated to use isEditCardVisible
+    },
+    async fetchUserData() {
+      const token = localStorage.getItem('token');
+      const tokenValue = token ? JSON.parse(token).token : null;
+
+      try {
+        const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/current-user', {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${tokenValue}`,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+
+        const data = await response.json();
+        console.log(data.description)
+         console.log(data)
+        this.user = data;
+        this.posts = data.posts.length;
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
     }
+  },
+  mounted() {
+    this.fetchUserData();
   }
 };
 </script>
-
 
 
 
