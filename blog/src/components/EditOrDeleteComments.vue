@@ -13,25 +13,28 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue';
-import { useRouter } from 'vue-router';
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
   comment: Object,
 });
 
-const emit = defineEmits(['onEdit', 'onDelete']);
+const emit = defineEmits(["onEdit", "onDelete"]);
 
 const isEditing = ref(false);
 const newContent = ref(props.comment.content);
 
-const token = localStorage.getItem('token');
+const token = localStorage.getItem("token");
 const tokenValue = token ? JSON.parse(token).token : null;
 const router = useRouter();
 
-watch(() => props.comment.content, (newVal) => {
-  newContent.value = newVal;
-});
+watch(
+  () => props.comment.content,
+  (newVal) => {
+    newContent.value = newVal;
+  }
+);
 
 const startEditing = () => {
   isEditing.value = true;
@@ -40,21 +43,21 @@ const startEditing = () => {
 const saveEdit = async () => {
   try {
     const response = await fetch(
-      `https://blog-camping-cbb2c4cfea86.herokuapp.com/comments/update/${props.comment._id}`,
+      import.meta.env.VITE_API_LINK + `/comments/update/${props.comment._id}`,
       {
-        method: 'PATCH',
+        method: "PATCH",
         headers: {
           Authorization: `Bearer ${tokenValue}`,
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ content: newContent.value }),
       }
     );
-    if (!response.ok) throw new Error('Failed to edit comment');
-    emit('onEdit');
+    if (!response.ok) throw new Error("Failed to edit comment");
+    emit("onEdit");
     isEditing.value = false; // Exit editing mode
   } catch (error) {
-    console.error('Error editing comment:', error);
+    console.error("Error editing comment:", error);
   }
 };
 
@@ -66,9 +69,9 @@ const cancelEdit = () => {
 const deleteComment = async () => {
   try {
     const response = await fetch(
-      `https://blog-camping-cbb2c4cfea86.herokuapp.com/comments/delete/${props.comment._id}`,
+      import.meta.env.VITE_API_LINK + `/comments/delete/${props.comment._id}`,
       {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
           Authorization: `Bearer ${tokenValue}`,
         },
@@ -76,12 +79,12 @@ const deleteComment = async () => {
     );
     if (!response.ok) {
       const errorData = await response.json();
-      console.error('Failed to delete comment:', errorData);
-      throw new Error('Failed to delete comment');
+      console.error("Failed to delete comment:", errorData);
+      throw new Error("Failed to delete comment");
     }
-    emit('onDelete');
+    emit("onDelete");
   } catch (error) {
-    console.error('Error deleting comment:', error);
+    console.error("Error deleting comment:", error);
   }
 };
 </script>

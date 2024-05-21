@@ -87,7 +87,7 @@ export default {
       const tokenValue = token ? JSON.parse(token).token : null;
 
       try {
-        const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/current-user', {
+        const response = await fetch(import.meta.env.VITE_API_LINK +'/users/current-user', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${tokenValue}`,

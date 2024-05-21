@@ -44,7 +44,7 @@ const createPost = async () => {
 
   try {
     const response = await fetch(
-      'https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/create',
+      import.meta.env.VITE_API_LINK +'/posts/create',
       {
         method: 'POST',
         headers: {

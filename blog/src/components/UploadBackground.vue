@@ -27,7 +27,7 @@ export default {
         formData.append('background', this.selectedFile);
 
         try {
-          const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/upload-background', {
+          const response = await fetch(import.meta.env.VITE_API_LINK + '/users/upload-background', {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${tokenValue}`

@@ -32,7 +32,7 @@ const tokenValue = token1 ? token1.token : null;
 
 const fetchUser = async () => {
   try {
-    const response = await fetch(`https://blog-camping-cbb2c4cfea86.herokuapp.com/users/user/${userId}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK +`/users/user/${userId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${tokenValue}`,
