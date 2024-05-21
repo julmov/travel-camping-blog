@@ -60,7 +60,7 @@ const editPost = () => {
 };
 
 onMounted(async () => {
-  await fetchUserData(); // Fetch user data before fetching the post
+  await fetchUserData(); // Fetch user data before fetching the postff
   await fetchPost();
 });
 
