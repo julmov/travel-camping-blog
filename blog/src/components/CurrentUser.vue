@@ -6,7 +6,7 @@
 import { ref } from 'vue';
 
 export function useUser() {
-  const user = ref({
+  const  user = ref({
     nickname: '',
     description: '',
     avatar: '',
@@ -19,7 +19,7 @@ export function useUser() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/current-user', {
+      const response = await fetch(import.meta.env.VITE_API_LINK +'/users/current-user', {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${tokenValue}`,
