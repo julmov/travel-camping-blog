@@ -10,14 +10,21 @@
         </div>
       </li>
     </ul>
+    <Footer />
   </div>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import Footer from './Footer.vue'
 
 export default {
+    name: 'PostsList',
+  components: {
+
+    Footer,
+  },
   setup() {
     const posts = ref([]);
     const router = useRouter();

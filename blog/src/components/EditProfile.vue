@@ -2,7 +2,7 @@
   <div class="edit-card">
     <h3>Edit Profile</h3>
     <label for="username">Username:</label>
-    <input type="text" id="username" v-model="username" />
+    <input type="text" id="username" v-model="nickname" />
     <label for="description">Description:</label>
     <textarea id="description" v-model="description"></textarea>
     <div class="buttons">
@@ -32,11 +32,10 @@ export default {
         const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/edit', {
           method: 'PATCH',
           headers: {
-                     Authorization: `Bearer ${tokenValue}`,
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${tokenValue}`,
           },
-         
-          body: JSON.stringify({ username: this.username, description: this.description }),
-        
+          body: JSON.stringify({ nickname: this.nickname, description: this.description }),
         });
 
         if (!response.ok) {

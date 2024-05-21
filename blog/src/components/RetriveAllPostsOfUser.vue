@@ -17,13 +17,20 @@ import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
 const posts = ref([]);
-const userNickname = ref('');
 const route = useRoute();
-const userId = ref(route.params.id);
+let userId = ref(route.params.id);
+
+// Use userId from local storage if router doesn't provide an ID
+if (!userId.value) {
+  const storedId = localStorage.getItem('_id');
+  if (storedId) {
+    userId.value = JSON.parse(storedId).userId;
+  }
+}
 
 const token = localStorage.getItem('token');
-const token1 = token ? JSON.parse(token) : null;
-const tokenValue = token1 ? token1.token : null;
+const tokenData = token ? JSON.parse(token) : null;
+const tokenValue = tokenData ? tokenData.token : null;
 
 const fetchUserPosts = async () => {
   try {

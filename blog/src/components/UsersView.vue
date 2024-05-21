@@ -7,19 +7,20 @@
         <div class="user-details">
           <span class="user-nickname">{{ user.nickname }}</span>
           <div class="buttons-profile">
-            <button class="add-show-btn">Add friend</button>
+            <button class="add-show-btn">Follow</button>
             <button class="add-show-btn" @click="goToUserProfile(user._id)">Show profile</button>
           </div>
         </div>
       </li>
     </ul>
+    <Footer />
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-
+import Footer from './Footer.vue'
 // Reference to store user data
 const users = ref([]);
 

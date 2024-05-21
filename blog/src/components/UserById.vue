@@ -8,6 +8,7 @@
 
     <!-- Include UserPosts component -->
     <RetriveAllPostsOfUser :userId="user._id" />
+    <Footer />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import RetriveAllPostsOfUser from './RetriveAllPostsOfUser.vue'; // Import the UserPosts component
+import Footer from './Footer.vue'
 
 // Reference to store user data
 const user = ref({});

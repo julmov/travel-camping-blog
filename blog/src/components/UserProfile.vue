@@ -11,7 +11,6 @@
     <div class="profile-info-block">
       <div>
         <h2>{{ user.nickname }}</h2>
-        <p>@{{ user.login }}</p>
       </div>
       <div class="posts-and-followers">
         <p><span>{{ posts }}</span> posts</p>
@@ -21,11 +20,13 @@
       <button id="followBtn" @click="showEditCard">Settings</button>
     </div>
     <p>{{ user.description }}</p>
-
+    <!-- Pass userId as prop to RetriveAllPostsOfUser -->
+    <RetriveAllPostsOfUser v-if="user._id" :userId="userId" />
     <!-- Upload Avatar Component -->
     <UploadAvatar v-if="showCard" @close="closeUploadCard" />
     <UploadBackground v-if="showBackgroundCard" @close="closeBackgroundUploadCard" @upload-success="fetchUserData" />
     <EditProfile v-if="isEditCardVisible" :currentUsername="user.nickname" :currentDescription="user.description" @close="closeEditCard" @update-success="fetchUserData" />
+    <Footer />
   </div>
 </template>
 
@@ -33,21 +34,24 @@
 import UploadAvatar from './UploadAvatar.vue';
 import UploadBackground from './UploadBackground.vue';
 import EditProfile from './EditProfile.vue';
+import RetriveAllPostsOfUser from './RetriveAllPostsOfUser.vue'; 
+import Footer from './Footer.vue'
 
 export default {
   name: 'UserProfile',
   components: {
     UploadAvatar,
     UploadBackground,
-    EditProfile
+    EditProfile,
+    RetriveAllPostsOfUser,
+    Footer,
   },
   data() {
     return {
       showCard: false,
       showBackgroundCard: false,
-      isEditCardVisible: false, // renamed from showEditCard
+      isEditCardVisible: false,
       user: {
-        login: '',
         nickname: '',
         description: '',
         avatar: '',
@@ -55,7 +59,8 @@ export default {
       },
       defaultAvatar: new URL('../assets/avatar.jpg', import.meta.url).href,
       defaultBackground: new URL('../assets/default-background.jpg', import.meta.url).href,
-      posts: 0
+      posts: 0,
+      userId: '' // Define userId here
     };
   },
   methods: {
@@ -72,10 +77,10 @@ export default {
       this.showBackgroundCard = false;
     },
     showEditCard() {
-      this.isEditCardVisible = true; // updated to use isEditCardVisible
+      this.isEditCardVisible = true;
     },
     closeEditCard() {
-      this.isEditCardVisible = false; // updated to use isEditCardVisible
+      this.isEditCardVisible = false;
     },
     async fetchUserData() {
       const token = localStorage.getItem('token');
@@ -94,10 +99,12 @@ export default {
         }
 
         const data = await response.json();
-        console.log(data.description)
-         console.log(data)
+        console.log(data);
         this.user = data;
         this.posts = data.posts.length;
+        localStorage.setItem('_id', JSON.stringify({ userId: data._id }));
+        console.log('id saved to localStorage:', data._id);
+        this.userId = data._id; // Set userId here
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -109,6 +116,5 @@ export default {
 };
 </script>
 
-
-
 <style src="../css/UserProfile.css"></style>
+

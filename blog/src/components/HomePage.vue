@@ -93,69 +93,19 @@
           </div>
         </div>
         <h2 class="blog-headers">Latest Posts</h2>
-         <div class="popular-posts">
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-            <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-             <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-             <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-        </div>
         
+        <LatestPosts />
         <h2 class="blog-headers">Popular Users</h2>
-        <div class="user-gallery">
-        <div class="user-card"><img src="../assets/avatar.jpg" alt="Avatar" class="user-card-img">
-       <div class="buttons-profile"> <button class="add-show-btn">Add friend</button><button class="add-show-btn">Show profile</button></div>
-        </div>
-        <div class="user-card"><img src="../assets/avatar.jpg" alt="Avatar" class="user-card-img"><div class="buttons-profile"> <button class="add-show-btn">Add friend</button><button class="add-show-btn">Show profile</button></div></div>
-        
-        <div class="user-card"><img src="../assets/avatar.jpg" alt="Avatar" class="user-card-img"><div class="buttons-profile"> <button class="add-show-btn">Add friend</button><button class="add-show-btn">Show profile</button></div></div>
-        <div class="user-card"><img src="../assets/avatar.jpg" alt="Avatar" class="user-card-img"><div class="buttons-profile"> <button class="add-show-btn">Add friend</button><button class="add-show-btn">Show profile</button></div></div>
-        <div class="user-card"><img src="../assets/avatar.jpg" alt="Avatar" class="user-card-img"><div class="buttons-profile"> <button class="add-show-btn">Add friend</button><button class="add-show-btn">Show profile</button></div></div>
-        
-      </div>
-    <footer>
-      <div>
-  <h2>SUBCRIBE TO OUR <br> NEWSLETTER</h2>  
-  <input type="text" placeholder="Enter Your Email Address" id="subscribe">
-  </div>
-   <div>
-  <h3>Sitemap</h3>  
-  <p>Travel Map</p>
-  <p>About Us</p>
-  <p>Blog</p>
-  <p>Account</p>
-   </div>
-   <div>
-  <h3>Contacts</h3>
-  <p>514-307-1555</p>
-  <p>campventure@gmail.com</p>
-  <div class="footer-icons"> <font-awesome-icon :icon="['fab', 'instagram']" /> <font-awesome-icon :icon="['fab', 'facebook']" /> <font-awesome-icon :icon="['fab', 'youtube']" /> <font-awesome-icon :icon="['fab', 'tiktok']" /> <font-awesome-icon :icon="['fab', 'x-twitter']" />  </div>
-  </div>
-    </footer>
+        <PopularUsers />
+        <Footer />
       </div>
   </div>
 </template>
 
 <script setup>
+import Footer from './Footer.vue'
+import LatestPosts from './LatestPosts.vue'
+import PopularUsers from './PopularUsers.vue'
 
 </script>
 

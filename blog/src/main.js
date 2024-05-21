@@ -8,6 +8,10 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import CreateComment from "./components/CreateComment.vue";
 import FetchComments from "./components/FetchComments.vue";
+import Footer from "./components/Footer.vue";
+import PopularUsers from './components/PopularUsers.vue'
+import LatestPosts from "./components/LatestPosts.vue";
+import CurrentUser from "./components/CurrentUser.vue";
 //import "./style.css"
 
 
