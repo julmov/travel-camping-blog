@@ -2,7 +2,7 @@
   <div class="user-posts">
     <h2>Posts</h2>
     <ul v-if="posts.length > 0">
-      <li v-for="post in posts" :key="post._id" class="user-post">
+      <li v-for="post in posts" :key="post._id" class="user-post" @click="goToPostDetail(post._id)">
         <h3>{{ post.title }}</h3>
         <img :src="post.image" alt="Post Image" class="post-image">
         <p>{{ post.content }}</p>
@@ -13,7 +13,9 @@
 </template>
 
 <script setup>
+const router = useRouter();
 import { ref, onMounted, watch } from 'vue';
+import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
 
 const posts = ref([]);
@@ -48,6 +50,9 @@ const fetchUserPosts = async () => {
   }
 };
 
+    const goToPostDetail = (postId) => {
+      router.push({ name: 'PostDetail', params: { id: postId } });
+    };
 // Fetch posts when the component is mounted
 onMounted(fetchUserPosts);
 

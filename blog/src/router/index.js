@@ -8,6 +8,7 @@ import UsersView from "../components/UsersView.vue";
 import PostById from "../components/PostById.vue";
 import UserById from "../components/UserById.vue";
 import PostsList from "../components/PostsList.vue";
+import EditPost from "../components/EditPost.vue";
 
 
 
@@ -25,7 +26,12 @@ const routes = [
     path: "/user/:id",
     name: "UserProfile",
     component: UserById,
-    props: true
+    props: true,
+  },
+  {
+    path: "/edit-post/:id",
+    name: "EditPost",
+    component: EditPost,
   },
 ];
 
