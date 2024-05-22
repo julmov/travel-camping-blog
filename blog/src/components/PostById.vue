@@ -7,12 +7,11 @@
         <p>{{ post.content }}</p>
       </div>
       <div class="post-info">
-
         <div class="who-posted-date">
           <p>Posted by: {{ userNickname }}</p>
-          <p>Created: {{ post.created_at.substring(0, 10)}}</p>
+          <p>Created: {{ post.created_at.substring(0, 10) }}</p>
         </div>
-                <font-awesome-icon
+        <font-awesome-icon
           v-if="isUserPost"
           :icon="['fas', 'pen-to-square']"
           class="btn-post-edit"
@@ -84,7 +83,9 @@ const editPost = () => {
 onMounted(async () => {
   await fetchUserData(); // Fetch user data before fetching the post
   await fetchPost();
-  await fetchUser();
+  if (post.value) {
+    await fetchUser(); // Fetch user only if post is available
+  }
 });
 </script>
 
