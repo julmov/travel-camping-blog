@@ -13,9 +13,9 @@
         <h2>{{ user.nickname }}</h2>
       </div>
       <div class="posts-and-followers">
-        <p><span>{{ posts }}</span> posts</p>
-        <p>followers</p>
-        <p>following</p>
+        <p class="count-stats"><span class="span-posts">{{ posts }}</span>posts</p>
+        <p class="count-stats"><FollowersCount /><span class="followers-span">followers</span></p>
+        <p class="count-stats"><FollowingCount /><span>0</span>following</p>
       </div>
       <button id="followBtn" @click="showEditCard">Settings</button>
     </div>
@@ -36,6 +36,8 @@ import UploadBackground from './UploadBackground.vue';
 import EditProfile from './EditProfile.vue';
 import RetriveAllPostsOfUser from './RetriveAllPostsOfUser.vue'; 
 import Footer from './Footer.vue'
+import FollowingCount from './FollowingCount.vue'
+import FollowersCount from './FollowersCount.vue'
 
 export default {
   name: 'UserProfile',
@@ -45,6 +47,8 @@ export default {
     EditProfile,
     RetriveAllPostsOfUser,
     Footer,
+    FollowingCount,
+    FollowersCount,
   },
   data() {
     return {
@@ -87,7 +91,7 @@ export default {
       const tokenValue = token ? JSON.parse(token).token : null;
 
       try {
-        const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/current-user', {
+        const response = await fetch(import.meta.env.VITE_API_LINK +'/users/current-user', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${tokenValue}`,

@@ -13,11 +13,13 @@
 </template>
 
 <script setup>
-const router = useRouter();
+
 import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
 
+
+const router = useRouter();
 const posts = ref([]);
 const route = useRoute();
 let userId = ref(route.params.id);
@@ -36,7 +38,7 @@ const tokenValue = tokenData ? tokenData.token : null;
 
 const fetchUserPosts = async () => {
   try {
-    const response = await fetch(`https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/all/user/${userId.value}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK + `/posts/all/user/${userId.value}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${tokenValue}`,

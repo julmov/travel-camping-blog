@@ -65,33 +65,7 @@
         
       </div>
       <div class="users-reviews">
-        <h2 class="blog-headers">Popular Posts</h2>
-        <div class="popular-posts">
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-            <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-             <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-             <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-        </div>
+     
         <h2 class="blog-headers">Latest Posts</h2>
         
         <LatestPosts />

@@ -34,7 +34,7 @@ const image = ref('');
 
 const fetchPost = async () => {
   try {
-    const response = await fetch(`https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/post/${postId}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK +`/posts/post/${postId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}`,
@@ -51,7 +51,7 @@ const fetchPost = async () => {
 
 const savePost = async () => {
   try {
-    const response = await fetch(`https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/update/${postId}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK +`/posts/update/${postId}`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}`,
@@ -68,7 +68,7 @@ const savePost = async () => {
 
 const deletePost = async () => {
   try {
-    const response = await fetch(`https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/delete/${postId}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK +`/posts/delete/post/${postId}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}`,

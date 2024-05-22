@@ -32,7 +32,7 @@ const password = ref('');
 
 const registerUser = async () => {
   try {
-    const response = await fetch("https://blog-camping-cbb2c4cfea86.herokuapp.com/users/sign-up", {
+    const response = await fetch(import.meta.env.VITE_API_LINK + "/users/sign-up", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

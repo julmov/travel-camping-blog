@@ -38,7 +38,7 @@ const tokenValue = token ? JSON.parse(token).token : null;
 const fetchComments = async () => {
   try {
     const response = await fetch(
-      `https://blog-camping-cbb2c4cfea86.herokuapp.com/comments/all/post/${postId}`,
+      import.meta.env.VITE_API_LINK +`/comments/all/post/${postId}`,
       {
         method: 'GET',
         headers: {

@@ -37,7 +37,7 @@ const isUserPost = ref(false);
 
 const fetchPost = async () => {
   try {
-    const response = await fetch(`https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/post/${postId}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK +`/posts/post/${postId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}`,

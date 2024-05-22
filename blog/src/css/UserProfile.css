@@ -42,10 +42,24 @@ main {
 .posts-and-followers{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .posts-and-followers P{
-   margin: 15px;
+   margin: 10px;
+   text-align: center;
+   display: flex;
+   justify-content: space-around;
+}
+
+.span-posts{
+  margin-top: 20px;
+}
+
+.followers-span{
+  margin-top: -10px;
+  margin-bottom: -9px;
 }
 
 #avatar{
@@ -88,4 +102,10 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.count-stats{
+display: flex;
+flex-direction: column;
+text-align: center;
 }

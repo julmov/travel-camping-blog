@@ -26,7 +26,7 @@ export default {
         const formData = new FormData();
         formData.append('avatar', this.selectedFile);
 
-        fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users/upload-avatar', {
+        fetch(import.meta.env.VITE_API_LINK +'/users/upload-avatar', {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${tokenValue}`

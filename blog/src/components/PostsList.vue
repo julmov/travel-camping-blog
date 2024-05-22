@@ -33,7 +33,7 @@ export default {
 
     const fetchPosts = async () => {
       try {
-        const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/posts/all', {
+        const response = await fetch(import.meta.env.VITE_API_LINK + '/posts/all', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${tokenValue}`,
@@ -63,7 +63,7 @@ export default {
   .posts {
   width: 100%;
   height: 100vh;
-  margin: 50px;
+  margin: 0;
 }
 /* Your styles here */
 .post-image {
@@ -91,7 +91,7 @@ export default {
   list-style-type: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  
 }
 
 .user-details{

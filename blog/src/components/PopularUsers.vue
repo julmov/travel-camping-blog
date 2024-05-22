@@ -4,7 +4,7 @@
       <div v-for="user in users" :key="user.id" class="user-card">
         <img :src="user.avatar || defaultAvatar" alt="Avatar" class="user-card-img">
         <div class="buttons-profile">
-          <button class="add-show-btn">Follow</button>
+       
           <button class="add-show-btn">Show profile</button>
         </div>
       </div>
@@ -24,7 +24,7 @@ let tokenValue = token1 ? token1.token : null;
 
 onMounted(async () => {
   try {
-    const response = await fetch('https://blog-camping-cbb2c4cfea86.herokuapp.com/users', {
+    const response = await fetch(import.meta.env.VITE_API_LINK + '/users', {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${tokenValue}`,

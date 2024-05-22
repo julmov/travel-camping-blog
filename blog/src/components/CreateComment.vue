@@ -24,7 +24,7 @@ const submitComment = async () => {
 
   try {
     const response = await fetch(
-      `https://blog-camping-cbb2c4cfea86.herokuapp.com/comments/add/post/${postId}`,
+      import.meta.env.VITE_API_LINK + `/comments/add/post/${postId}`,
       {
         method: 'POST',
         headers: {
