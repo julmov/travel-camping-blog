@@ -14,7 +14,7 @@
     <h2 id="join-us"> Join us for exiting travel adventure</h2>
         </div>
      <h1 id="header">It's Great Time <br> to Start Living Now</h1>
-     <button class="know-more">Know More</button>
+     <button class="know-more"><router-link to="/posts" class="link-know-more">Know More</router-link></button>
        </div>
   </div>
   </div>
@@ -85,5 +85,11 @@ import PopularUsers from './PopularUsers.vue'
 
 <style scoped>
 @import "../css/HomePage.css"; /* Import the HomePage styles */
+
+.link-know-more{
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+}
 
 </style>

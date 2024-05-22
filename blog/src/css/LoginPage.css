@@ -58,6 +58,18 @@ button {
   border: none;
   border-radius: 6px;
 }
+button:hover{
+  background: rgb(38,77,64);
+  background: linear-gradient(90deg, rgba(49, 104, 86, 0.76)gba(104,196,105,1) 57%, rgba(77,136,116,1) 87%);
+}
+
+button:active{
+    background: rgb(38,77,64);
+  background: linear-gradient(90deg, rgba(199, 215, 210, 0.76)gba(104,196,105,1) 57%, rgba(77,136,116,1) 87%);
+}
+
+
+
 #username, #password, #email{
     width: 300px;
     background: none;

@@ -1,5 +1,5 @@
  <template>
-<footer v-if="!isHomePage">
+<footer>
       <div>
         <h2>SUBCRIBE TO OUR <br> NEWSLETTER</h2>  
         <input type="text" placeholder="Enter Your Email Address" id="subscribe">

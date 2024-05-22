@@ -10,17 +10,18 @@
     </div>
     <div class="profile-info-block">
       <div>
-        <h2>{{ user.nickname }}</h2>
+        <h2 class="user-profile-head">{{ user.nickname }}</h2>
       </div>
       <div class="posts-and-followers">
         <p class="count-stats"><span class="span-posts">{{ posts }}</span>posts</p>
         <p class="count-stats"><FollowersCount /><span class="followers-span">followers</span></p>
         <p class="count-stats"><FollowingCount /><span>0</span>following</p>
       </div>
-      <button id="followBtn" @click="showEditCard">Settings</button>
+      <button id="followBtn" class="settingButton" @click="showEditCard">Settings</button>
     </div>
     <p>{{ user.description }}</p>
     <!-- Pass userId as prop to RetriveAllPostsOfUser -->
+    <h2 class="user-profile-head">Posts</h2>
     <RetriveAllPostsOfUser v-if="user._id" :userId="userId" />
     <!-- Upload Avatar Component -->
     <UploadAvatar v-if="showCard" @close="closeUploadCard" />
@@ -120,5 +121,9 @@ export default {
 };
 </script>
 
-<style src="../css/UserProfile.css"></style>
+<style src='../css/UserProfile.css'>
+
+
+
+</style>
 

@@ -20,7 +20,7 @@
     </div>
    
     <p>{{ user.description }}</p>
-
+    <h2>{{ postsCount }} posts</h2>
     <!-- Include more user details here -->
     
     <!-- Include UserPosts component -->
@@ -71,9 +71,7 @@ onMounted(fetchUser);
 </script>
 
 <style scoped>
-.user-profile {
-  text-align: center;
-}
+
 
 .user-avatar {
   width: 100px;

@@ -17,12 +17,11 @@
       <p>Loading...</p>
     </div>
     <FetchComments />
-    <CreateComment />
   </div>
 </template>
 
 <script setup>
-import CreateComment from './CreateComment.vue';
+
 import FetchComments from './FetchComments.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';

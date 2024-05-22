@@ -73,6 +73,10 @@ main {
     border: 1px solid white;
 }
 
+.settingBtn{
+  margin-top: 35px;
+}
+
 .upload-card {
   position: fixed;
   top: 50%;
@@ -108,4 +112,9 @@ main {
 display: flex;
 flex-direction: column;
 text-align: center;
+}
+
+.user-profile-head{
+color:white;
+margin-top: 50px;
 }

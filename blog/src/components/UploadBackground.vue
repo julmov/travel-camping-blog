@@ -39,6 +39,7 @@ export default {
             alert('Background uploaded successfully');
             this.$emit('upload-success');
             this.$emit('close');
+            window.location.reload();
           } else {
             alert('Error uploading background');
           }

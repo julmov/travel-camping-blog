@@ -40,6 +40,7 @@ const submitComment = async () => {
       console.log('Comment created successfully:', data);
       // Navigate to a different page or clear the form after successful comment creation
       router.push(`/post/${postId}`); // Example navigation
+       window.location.reload(); 
     } else {
       console.error('Error creating comment:', response.statusText);
     }

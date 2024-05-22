@@ -1,6 +1,5 @@
 <template>
   <div class="user-posts">
-    <h2>Posts</h2>
     <ul v-if="posts.length > 0">
       <li v-for="post in posts" :key="post._id" class="user-post" @click="goToPostDetail(post._id)">
         <h3>{{ post.title }}</h3>
@@ -68,16 +67,38 @@ watch(() => route.params.id, (newId) => {
 <style scoped>
 .user-posts {
   margin-top: 20px;
+  background-color: #ddd;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .user-post {
   border: 1px solid #ddd;
-  padding: 10px;
   margin-bottom: 10px;
+  list-style-type: none;
+  background-color: #5a5a5a99;
+  height: auto;
+  padding: 20px;
+  width: calc(100% - 40px);
+  max-width: 760px;
+  margin-left: -35px;
 }
 
 .post-image {
-  width: 100%;
+  width: 200px;
   height: auto;
+}
+h2{
+  padding-top: 24px;
+  margin-left: 55px;
+}
+
+ul{
+  min-height: fit-content;
+ display: flex;
+ flex-direction: column;
+padding-top: 65px;
+padding-bottom: 65px;
+ align-items: center;
 }
 </style>

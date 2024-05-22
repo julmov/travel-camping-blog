@@ -1,15 +1,17 @@
 <template>
   <div class="posts">
     <h1>Posts</h1>
-    <ul class="posts-list">
-      <li v-for="post in posts" :key="post._id" class="user-card" @click="goToPostDetail(post._id)">
-        <div class="user-details">
-          <img :src="post.image" alt="Post Image" class="post-image">
-          <span class="post-title">{{ post.title }}</span>
-          <span class="post-content">{{ post.content }}</span>
+    <div class="posts-list">
+      <div v-for="post in posts" :key="post._id" class="post-box" @click="goToPostDetail(post._id)">
+        <img :src="post.image" alt="Post Image" class="post-pic">
+        <h3 class="latest-posts-headers">{{ post.title.substring(0, 40) }}</h3>
+        <div class="read-more">
+        <p>{{ post.content.substring(0, 150) + '...' }}</p>
+        <p>_____________________________________________</p>
+        <p>read more <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
         </div>
-      </li>
-    </ul>
+      </div>
+    </div>
     <Footer />
   </div>
 </template>
@@ -17,12 +19,11 @@
 <script>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-import Footer from './Footer.vue'
+import Footer from './Footer.vue';
 
 export default {
-    name: 'PostsList',
+  name: 'PostsList',
   components: {
-
     Footer,
   },
   setup() {
@@ -58,44 +59,58 @@ export default {
 };
 </script>
 
-<style>
-
-  .posts {
+<style scoped>
+.posts {
   width: 100%;
-  height: 100vh;
-  margin: 0;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
-/* Your styles here */
-.post-image {
-  width: 100%; /* Adjust as needed */
-  height: 145px; /* Maintain aspect ratio */
-  margin-right: 10px; /* Add spacing between image and text */
-}
-.post-title {
-  font-weight: bold; /* Make the title stand out */
-}
-.post-content {
-  /* Any additional styling for the content */
-}
-.user-card {
-  cursor: pointer;
-  width: 250px;
-  height: 250px;
-  border: 1px solid white;
-  overflow: hidden;
-  margin: 10px;
-  padding: 10px;
-  border-radius: 5px;
-}
-.posts-list{
-  list-style-type: none;
+
+.posts-list {
   display: flex;
   flex-wrap: wrap;
-  
+  gap: 20px;
+  justify-content: center;
 }
 
-.user-details{
-  display: flex;
-  flex-direction: column;
+.post-box {
+  cursor: pointer;
+  width: 250px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  background-color: #7c797985;
 }
+
+.post-box:hover {
+  transform: scale(1.05);
+}
+
+.post-pic {
+  width: 100%;
+  height: 145px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.latest-posts-headers {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #ddd;
+}
+
+.post-content {
+  margin: 10px 0;
+}
+
+.read-more {
+margin-top: auto;
+}
+
 </style>
