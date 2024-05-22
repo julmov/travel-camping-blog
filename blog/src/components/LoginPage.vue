@@ -69,6 +69,7 @@ const handleSubmit = async () => {
       router.push("/home");
     }
   } catch (error) {
+    alert(error)
     console.error("Error:", error);
   }
 };

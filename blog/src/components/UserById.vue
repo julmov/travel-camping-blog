@@ -9,18 +9,19 @@
       <img :src="user.avatar || defaultAvatar" alt="Avatar" id="avatar">
     </div>
     <div class="profile-info-block">
-      <div>
-        <h2>{{ user.nickname }}</h2>
+      <div class="btn-and-header">
+        <h2 class="user-profile-head">{{ user.nickname }}</h2>
+         <FollowButton :userId="user._id" id="followBtn"/>
       </div>
       <div class="posts-and-followers">
-        <p><span>{{ postsCount }}</span> posts</p>
+        
       </div>
       <!-- Include FollowButton component and pass the userId -->
-      <FollowButton :userId="user._id" id="followBtn"/>
+     
     </div>
    
     <p>{{ user.description }}</p>
-    <h2>{{ postsCount }} posts</h2>
+    <h2 class="user-profile-head">{{ postsCount }} posts</h2>
     <!-- Include more user details here -->
     
     <!-- Include UserPosts component -->

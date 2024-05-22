@@ -37,6 +37,8 @@ main {
 .profile-info-block{
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid white;
+    margin-bottom: 40px;
 }
 
 .posts-and-followers{
@@ -71,6 +73,16 @@ main {
 #followBtn{
     height: 40px;
     border: 1px solid white;
+    margin-top: 10px;
+}
+
+.btn-and-header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
 }
 
 .settingBtn{

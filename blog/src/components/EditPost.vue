@@ -4,18 +4,21 @@
     <form @submit.prevent="savePost">
       <div>
         <label for="title">Title:</label>
-        <input id="title" v-model="title" type="text" />
+        <input id="title" v-model="title" type="text" class="input-field" />
       </div>
       <div>
         <label for="content">Content:</label>
-        <textarea id="content" v-model="content"></textarea>
+        <textarea id="content" v-model="content" class="input-field"></textarea>
       </div>
       <div>
         <label for="image">Image URL:</label>
-        <input id="image" v-model="image" type="text" />
+        <input id="image" v-model="image" type="text" class="input-field" />
       </div>
-      <button type="submit">Save</button>
-      <button type="button" @click="deletePost">Delete</button>
+      <div class="button-group">
+        <button type="submit" class="btn">Save</button>
+        <button type="button" @click="cancel" class="btn btn-cancel">Cancel</button>
+        <button type="button" @click="deletePost" class="btn btn-danger">Delete post</button>
+      </div>
     </form>
   </div>
 </template>
@@ -81,20 +84,73 @@ const deletePost = async () => {
   }
 };
 
+const cancel = () => {
+  router.push({ name: 'PostDetail', params: { id: postId } });
+};
+
 onMounted(fetchPost);
 </script>
 
 <style scoped>
 .edit-post {
-  width: 50%;
+  width: 80%;
   margin: auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-form div {
-  margin-bottom: 10px;
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-button {
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  width: calc(100% - 20px); /* Adjusted width */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: auto; /* Centered input fields */
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn {
+  width: 100px; /* Adjusted button width */
+  padding: 10px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
   margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+}
+
+.btn-cancel {
+  background-color: #6c757d; /* Gray color for cancel button */
 }
 </style>

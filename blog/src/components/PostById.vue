@@ -6,12 +6,19 @@
         <img :src="post.image" alt="Post Image" />
         <p>{{ post.content }}</p>
       </div>
-      <font-awesome-icon
-        v-if="isUserPost"
-        :icon="['fas', 'pen-to-square']"
-        class="btn-post-edit"
-        @click="editPost"
-      />
+      <div class="post-info">
+
+        <div class="who-posted-date">
+          <p>Posted by: {{ userNickname }}</p>
+          <p>Created: {{ post.created_at.substring(0, 10)}}</p>
+        </div>
+                <font-awesome-icon
+          v-if="isUserPost"
+          :icon="['fas', 'pen-to-square']"
+          class="btn-post-edit"
+          @click="editPost"
+        />
+      </div>
     </div>
     <div v-else>
       <p>Loading...</p>
@@ -21,7 +28,6 @@
 </template>
 
 <script setup>
-
 import FetchComments from './FetchComments.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -33,6 +39,7 @@ const route = useRoute();
 const router = useRouter();
 const postId = route.params.id;
 const isUserPost = ref(false);
+const userNickname = ref('');
 
 const fetchPost = async () => {
   try {
@@ -44,6 +51,7 @@ const fetchPost = async () => {
     });
     const data = await response.json();
     post.value = data;
+    console.log(data);
 
     // Check if the post belongs to the current user
     if (user.value && post.value.userId === user.value._id) {
@@ -54,15 +62,30 @@ const fetchPost = async () => {
   }
 };
 
+const fetchUser = async () => {
+  try {
+    const response = await fetch(import.meta.env.VITE_API_LINK + `/users/user/${post.value.userId}`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token")).token}`,
+      },
+    });
+    const userData = await response.json();
+    userNickname.value = userData.nickname;
+  } catch (error) {
+    console.error('Error fetching user:', error);
+  }
+};
+
 const editPost = () => {
   router.push({ name: 'EditPost', params: { id: postId } });
 };
 
 onMounted(async () => {
-  await fetchUserData(); // Fetch user data before fetching the postff
+  await fetchUserData(); // Fetch user data before fetching the post
   await fetchPost();
+  await fetchUser();
 });
-
 </script>
 
 <style scoped>
@@ -97,9 +120,28 @@ img {
 }
 
 .btn-post-edit {
-  margin-left: calc(100% - 30px);
   color: white;
   font-size: 20px;
   cursor: pointer;
+  margin-right: 10px;
+}
+
+.post-info {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+.who-posted-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.who-posted-date p {
+  margin: 0;
 }
 </style>
