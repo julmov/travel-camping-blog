@@ -1,11 +1,29 @@
 <template>
   <div class="user-profile">
-    <h1>{{ user.nickname }}</h1>
-    <img :src="user.avatar || defaultAvatar" alt="Avatar" class="user-avatar">
+    <div 
+      class="background-image" 
+      @dblclick="showBackgroundUploadCard"
+      :style="{ backgroundImage: `url(${user.background || defaultBackground})`, backgroundSize: 'cover', backgroundPosition: 'center' }"
+      id="background"></div>
+    <div class="avatar" @dblclick="showUploadCard">
+      <img :src="user.avatar || defaultAvatar" alt="Avatar" id="avatar">
+    </div>
+    <div class="profile-info-block">
+      <div class="btn-and-header">
+        <h2 class="user-profile-head">{{ user.nickname }}</h2>
+         <FollowButton :userId="user._id" id="followBtn"/>
+      </div>
+      <div class="posts-and-followers">
+        
+      </div>
+      <!-- Include FollowButton component and pass the userId -->
+     
+    </div>
+   
     <p>{{ user.description }}</p>
-
+    <h2 class="user-profile-head">{{ postsCount }} posts</h2>
     <!-- Include more user details here -->
-
+    
     <!-- Include UserPosts component -->
     <RetriveAllPostsOfUser :userId="user._id" />
     <Footer />
@@ -15,14 +33,17 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import RetriveAllPostsOfUser from './RetriveAllPostsOfUser.vue'; // Import the UserPosts component
-import Footer from './Footer.vue'
+import RetriveAllPostsOfUser from './RetriveAllPostsOfUser.vue';
+import Footer from './Footer.vue';
+import FollowButton from './FollowButton.vue'; // Import the FollowButton component
+import FollowingCount from './FollowingCount.vue'
+import FollowersCount from './FollowersCount.vue'
 
-// Reference to store user data
 const user = ref({});
+const postsCount = ref(0);
 const defaultAvatar = new URL('../assets/avatar.jpg', import.meta.url).href;
+const defaultBackground = new URL('../assets/background.jpg', import.meta.url).href;
 
-// Retrieve the user ID from the route parameters
 const route = useRoute();
 const userId = route.params.id;
 
@@ -32,27 +53,26 @@ const tokenValue = token1 ? token1.token : null;
 
 const fetchUser = async () => {
   try {
-    const response = await fetch(import.meta.env.VITE_API_LINK +`/users/user/${userId}`, {
+    const response = await fetch(import.meta.env.VITE_API_LINK + `/users/user/${userId}`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${tokenValue}`,
       },
     });
     const data = await response.json();
-    user.value = data; // Update the user ref with fetched data
+    user.value = data;
+    postsCount.value = Array.isArray(data.posts) ? data.posts.length : 0; // Ensure postsCount is correctly set
+    
   } catch (error) {
     console.error('Error fetching user:', error);
   }
 };
 
-// Fetch the user data when the component is mounted
 onMounted(fetchUser);
 </script>
 
 <style scoped>
-.user-profile {
-  text-align: center;
-}
+
 
 .user-avatar {
   width: 100px;

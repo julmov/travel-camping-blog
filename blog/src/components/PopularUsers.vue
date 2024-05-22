@@ -4,7 +4,7 @@
       <div v-for="user in users" :key="user.id" class="user-card">
         <img :src="user.avatar || defaultAvatar" alt="Avatar" class="user-card-img">
         <div class="buttons-profile">
-          <button class="add-show-btn">Follow</button>
+       
           <button class="add-show-btn">Show profile</button>
         </div>
       </div>

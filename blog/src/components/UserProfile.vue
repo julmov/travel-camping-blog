@@ -9,18 +9,20 @@
       <img :src="user.avatar || defaultAvatar" alt="Avatar" id="avatar">
     </div>
     <div class="profile-info-block">
-      <div>
-        <h2>{{ user.nickname }}</h2>
+      <div class="btn-and-header">
+        <h2 class="user-profile-head">{{ user.nickname }}</h2>
+              <div class="posts-and-followers">
+        <p class="count-stats"><span class="span-posts">{{ posts }}</span>posts</p>
+        <p class="count-stats"><FollowersCount /><span class="followers-span">followers</span></p>
+        <p class="count-stats"><FollowingCount /><span>0</span>following</p>
       </div>
-      <div class="posts-and-followers">
-        <p><span>{{ posts }}</span> posts</p>
-        <p>followers</p>
-        <p>following</p>
+        <button id="followBtn" class="settingButton" @click="showEditCard">Settings</button>
       </div>
-      <button id="followBtn" @click="showEditCard">Settings</button>
     </div>
+    
     <p>{{ user.description }}</p>
     <!-- Pass userId as prop to RetriveAllPostsOfUser -->
+    <h2 class="user-profile-head">Posts</h2>
     <RetriveAllPostsOfUser v-if="user._id" :userId="userId" />
     <!-- Upload Avatar Component -->
     <UploadAvatar v-if="showCard" @close="closeUploadCard" />
@@ -36,6 +38,8 @@ import UploadBackground from './UploadBackground.vue';
 import EditProfile from './EditProfile.vue';
 import RetriveAllPostsOfUser from './RetriveAllPostsOfUser.vue'; 
 import Footer from './Footer.vue'
+import FollowingCount from './FollowingCount.vue'
+import FollowersCount from './FollowersCount.vue'
 
 export default {
   name: 'UserProfile',
@@ -45,6 +49,8 @@ export default {
     EditProfile,
     RetriveAllPostsOfUser,
     Footer,
+    FollowingCount,
+    FollowersCount,
   },
   data() {
     return {
@@ -116,5 +122,9 @@ export default {
 };
 </script>
 
-<style src="../css/UserProfile.css"></style>
+<style src='../css/UserProfile.css'>
+
+
+
+</style>
 

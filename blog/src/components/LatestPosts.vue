@@ -2,8 +2,7 @@
   <div class="popular-posts">
     <div v-for="post in posts" :key="post._id" class="post-box">
       <img :src="post.image" alt="landscape" class="post-pic">
-      <img src="../assets/avatar.jpg" alt="Avatar" class="small-avatar">
-      <h3>{{ post.title }}</h3>
+      <h3 class="latest-posts-headers">{{ post.title }}</h3>
       <p>{{ post.content.substring(0, 150) + '...'}}</p>
       <p>_____________________________________________</p>
       <p>read more <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
@@ -43,4 +42,11 @@ onMounted(async () => {
 
 <style scoped>
 @import '../css/HomePage.css';
+.post-pic{
+  margin-bottom: 20px;
+}
+
+.post-box:hover {
+  transform: scale(1.05);
+}
 </style>

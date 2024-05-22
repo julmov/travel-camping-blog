@@ -37,15 +37,31 @@ main {
 .profile-info-block{
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid white;
+    margin-bottom: 40px;
 }
 
 .posts-and-followers{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .posts-and-followers P{
-   margin: 15px;
+   margin: 10px;
+   text-align: center;
+   display: flex;
+   justify-content: space-around;
+}
+
+.span-posts{
+  margin-top: 20px;
+}
+
+.followers-span{
+  margin-top: -10px;
+  margin-bottom: -9px;
 }
 
 #avatar{
@@ -57,6 +73,20 @@ main {
 #followBtn{
     height: 40px;
     border: 1px solid white;
+    margin-top: 10px;
+}
+
+.btn-and-header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+.settingBtn{
+  margin-top: 35px;
 }
 
 .upload-card {
@@ -88,4 +118,15 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.count-stats{
+display: flex;
+flex-direction: column;
+text-align: center;
+}
+
+.user-profile-head{
+color:white;
+margin-top: 50px;
 }

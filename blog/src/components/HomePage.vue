@@ -14,7 +14,7 @@
     <h2 id="join-us"> Join us for exiting travel adventure</h2>
         </div>
      <h1 id="header">It's Great Time <br> to Start Living Now</h1>
-     <button class="know-more">Know More</button>
+     <button class="know-more"><router-link to="/posts" class="link-know-more">Know More</router-link></button>
        </div>
   </div>
   </div>
@@ -65,33 +65,7 @@
         
       </div>
       <div class="users-reviews">
-        <h2 class="blog-headers">Popular Posts</h2>
-        <div class="popular-posts">
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-            <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-             <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-          <div class="post-box">
-            <img src="../assets/post1.jpg" alt="landscape" class="post-pic">
-            <div class="small-avatar"><img src="../assets/avatar.jpg" alt="Avatar" id="avatar"></div>
-             <h3>Unforgettable weekend</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. In, minus, ut, dicta possimus illum dolor quas modi numquam eos porro itaque aperiam!</p>
-            <p>_____________________________________________</p>
-            <p>read more  <font-awesome-icon :icon="['fas', 'arrow-right-long']" /></p>
-          </div>
-        </div>
+     
         <h2 class="blog-headers">Latest Posts</h2>
         
         <LatestPosts />
@@ -111,5 +85,11 @@ import PopularUsers from './PopularUsers.vue'
 
 <style scoped>
 @import "../css/HomePage.css"; /* Import the HomePage styles */
+
+.link-know-more{
+  text-decoration: none;
+  font-size: 16px;
+  color: white;
+}
 
 </style>

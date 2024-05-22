@@ -59,9 +59,12 @@ const createPost = async () => {
       const data = await response.json();
       console.log('Post created successfully:', data);
       // Navigate to a different page or clear the form after successful post creation
-      router.push('/home'); // Example navigation
+      alert("Post created successfully")
+      router.push('/posts'); // Example navigation
+      //window.location.reload()
     } else {
       console.error('Error creating post:', response.statusText);
+      alert("Error creating post (max 500 mymbols)")
     }
   } catch (error) {
     console.error('Error creating post:', error);

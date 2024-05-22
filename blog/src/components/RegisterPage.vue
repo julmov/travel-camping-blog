@@ -49,6 +49,7 @@ const registerUser = async () => {
 
     if (response.ok) {
       const router = useRouter();
+      alert("Account successfully created")
       router.push('/home'); // Redirect to /home route after successful registration
     } else {
       console.error('Registration failed:', data); // Handle registration error

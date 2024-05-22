@@ -1,6 +1,6 @@
 <template>
+  <h1 class="comments-header">Comments</h1>
   <div class="comments">
-    <h1>Comments</h1>
     <ul class="comments-list">
       <li
         v-for="comment in comments"
@@ -9,7 +9,7 @@
         @click="toggleMenu(comment)"
       >
         <div class="user-details">
-          <span class="post-content">{{ comment.userId.nickname }}</span>
+          <span class="comment-nickname">{{ comment.userId.nickname }}</span>
           <span class="post-content">{{ comment.content }}</span>
           <EditOrDeleteComments
             :comment="comment"
@@ -19,6 +19,7 @@
         </div>
       </li>
     </ul>
+    <CreateComment />
   </div>
 </template>
 
@@ -27,6 +28,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import EditOrDeleteComments from './EditOrDeleteComments.vue';
 import { useUser } from '../components/CurrentUser.vue'; // Correct path
+import CreateComment from './CreateComment.vue';
 
 const { user, fetchUserData } = useUser();
 const route = useRoute();
@@ -68,6 +70,10 @@ onMounted(async () => {
 <style scoped>
 .comments {
   margin-top: 20px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 40px;
+ 
 }
 
 .comments-list {
@@ -87,10 +93,19 @@ onMounted(async () => {
 .user-details {
   display: flex;
   flex-direction: column;
+  
 }
 
 .post-content {
   font-size: 14px;
+}
+.comments-header{
+  margin-top: 10px;
+}
+.comment-nickname{
+
+font-size: 19px;
+margin-bottom: 10px;
 }
 </style>
 
