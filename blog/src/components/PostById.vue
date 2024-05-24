@@ -3,16 +3,30 @@
     <div class="post-detail" v-if="post">
       <h1>{{ post.title }}</h1>
       <div class="post-photo-and-content">
-        <img :src="post.image" alt="Post Image" />
+           <img
+          v-if="post.image.match(/\.(jpg|jpeg|png|gif)$/i)"
+          :src="post.image"
+          alt="Post Image"
+          class="post-image"
+        />
+          <video v-else controls autoplay muted>
+            <source
+              :src="post.image"
+              :type="
+                post.image.match(/\.(mp4|webm|ogg)$/i)
+                  ? 'video/' + post.image.split('.').pop()
+                  : ''
+              "
+            />
+          </video>
         <p>{{ post.content }}</p>
       </div>
       <div class="post-info">
-
         <div class="who-posted-date">
           <p>Posted by: {{ userNickname }}</p>
-          <p>Created: {{ post.created_at.substring(0, 10)}}</p>
+          <p>Created: {{ post.created_at.substring(0, 10) }}</p>
         </div>
-                <font-awesome-icon
+        <font-awesome-icon
           v-if="isUserPost"
           :icon="['fas', 'pen-to-square']"
           class="btn-post-edit"
@@ -24,6 +38,7 @@
       <p>Loading...</p>
     </div>
     <FetchComments />
+    <Footer />
   </div>
 </template>
 
@@ -32,6 +47,7 @@ import FetchComments from './FetchComments.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUser } from '../components/CurrentUser.vue'; // Correct path
+import Footer from './Footer.vue'
 
 const { user, fetchUserData } = useUser();
 const post = ref(null);
@@ -84,7 +100,9 @@ const editPost = () => {
 onMounted(async () => {
   await fetchUserData(); // Fetch user data before fetching the post
   await fetchPost();
-  await fetchUser();
+  if (post.value) {
+    await fetchUser(); // Fetch user only if post is available
+  }
 });
 </script>
 

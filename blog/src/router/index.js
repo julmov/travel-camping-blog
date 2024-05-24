@@ -41,14 +41,10 @@ const router = createRouter({
 });
 
 // Navigation guard to check authentication
-// Navigation guard to check authentication
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
-  const isAuthenticated = token !== undefined && token !== null;
-  const isLoginPage = to.path === '/login';
-  const isRegisterPage = to.path === '/register';
+  const isAuthenticated = /* Logic to check if user is authenticated */ false;
 
-  if (!isLoginPage && !isRegisterPage && !isAuthenticated) {
+  if (to.meta.requiresAuth && !isAuthenticated) {
     next("/login");
   } else {
     next();

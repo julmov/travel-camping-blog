@@ -6,7 +6,6 @@
         <p><font-awesome-icon :icon="['fas', 'mountain-sun']" class="icons" /><router-link to="/home" class="menu-link">CampVenture</router-link></p>
         <div class="menu">
           <p><router-link to="/create" class="menu-link">New Post</router-link></p>
-          <p>About Us</p>
           <p><router-link to="/posts" class="menu-link">Blog</router-link></p>
           <p><router-link to="/users" class="menu-link">Users</router-link></p>
         </div>

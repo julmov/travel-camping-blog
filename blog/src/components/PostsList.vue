@@ -4,6 +4,7 @@
     <div class="posts-list">
       <div v-for="post in posts" :key="post._id" class="post-box" @click="goToPostDetail(post._id)">
         <img :src="post.image" alt="Post Image" class="post-pic">
+  
         <h3 class="latest-posts-headers">{{ post.title.substring(0, 40) }}</h3>
         <div class="read-more">
         <p>{{ post.content.substring(0, 150) + '...' }}</p>

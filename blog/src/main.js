@@ -28,6 +28,7 @@ const app = createApp(App);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.component("CreateComment", CreateComment);
 app.component("FollowingCount", FollowingCount);
+app.component("FollowersCount", FollowingCount);
 app.component("FetchComments", FetchComments);
 app.use(router);
 app.mount("#app");

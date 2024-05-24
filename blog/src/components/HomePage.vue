@@ -51,7 +51,8 @@
     <div class="middle-row-letsgo">
       <div class="left-part">
       <h2 class="lets-explore-header">Let's Explore <br> The World Together</h2>
-      <button>Let's Go</button>
+     
+      <button><router-link to="/create" class="link-know-more">Let's Go</router-link></button>
        </div>
       <p class="right-part">Embark on Adventures, Share Experiences, Connect with Nature. Join our Camping Community Today! Together, let's ignite the spirit of adventure and make every camping trip an unforgettable journey. Become a part of CampVenture today and let the adventures begin!</p>
      
