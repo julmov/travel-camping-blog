@@ -11,7 +11,6 @@
         <div class="user-details">
           <span class="user-nickname">{{ user.nickname }}</span>
           <div class="buttons-profile">
-            <button class="add-show-btn">Follow</button>
             <button class="add-show-btn" @click="goToUserProfile(user._id)">
               Show profile
             </button>

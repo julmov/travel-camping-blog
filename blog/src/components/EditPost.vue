@@ -1,16 +1,16 @@
 <template>
   <div class="edit-post">
     <h2>Edit Post</h2>
-    <form @submit.prevent="savePost">
-      <div>
+    <form @submit.prevent="savePost" class="formEditPost">
+      <div class="inputDiv">
         <label for="title">Title:</label>
         <input id="title" v-model="title" type="text" class="input-field" />
       </div>
-      <div>
+      <div class="inputDiv">
         <label for="content">Content:</label>
-        <textarea id="content" v-model="content" class="input-field"></textarea>
+        <textarea id="content" v-model="content" class="input-content"></textarea>
       </div>
-      <div>
+      <div class="inputDiv">
         <label for="image">Image URL:</label>
         <input id="image" v-model="image" type="text" class="input-field" />
       </div>
@@ -93,12 +93,16 @@ onMounted(fetchPost);
 
 <style scoped>
 .edit-post {
-  width: 80%;
+  width: 50%;
   margin: auto;
   padding: 20px;
   background-color: #f5f5f5;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 h2 {
@@ -109,6 +113,7 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
+  width: 200px;
 }
 
 .input-field {
@@ -118,12 +123,23 @@ form {
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: auto; /* Centered input fields */
+  
+}
+.input-content{
+    width: calc(100% - 20px); /* Adjusted width */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: auto; /* Centered input fields */
+  min-height: 100px;
 }
 
 .button-group {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  width: 700px;
 }
 
 .btn {
@@ -136,6 +152,7 @@ form {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-right: 10px;
+  width: 150px;
 }
 
 .btn:hover {
@@ -153,4 +170,14 @@ form {
 .btn-cancel {
   background-color: #6c757d; /* Gray color for cancel button */
 }
+
+.formEditPost{
+
+  width: 100%;
+}
+
+.inputDiv{
+  width: 500px;
+}
+
 </style>

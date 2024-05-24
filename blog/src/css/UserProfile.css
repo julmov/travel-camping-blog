@@ -46,22 +46,38 @@ main {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 30px;
 }
+
+.count-stats{
+display: flex;
+flex-direction: column;
+text-align: center;
+margin-bottom: 10px;
+}
+
 
 .posts-and-followers P{
    margin: 10px;
    text-align: center;
    display: flex;
    justify-content: space-around;
+
 }
 
 .span-posts{
-  margin-top: 20px;
+  margin-top: 24px;
+}
+
+.posts-word{
+  margin-top: 4px;
+  margin-bottom: 3px;
+  font-size: 15px;
 }
 
 .followers-span{
-  margin-top: -10px;
-  margin-bottom: -9px;
+  margin-top: -5px;
+  margin-bottom: -10px;
 }
 
 #avatar{
@@ -120,11 +136,6 @@ main {
   background-repeat: no-repeat;
 }
 
-.count-stats{
-display: flex;
-flex-direction: column;
-text-align: center;
-}
 
 .user-profile-head{
 color:white;

@@ -17,3 +17,15 @@
 h1{
     padding-left: 55px;
 }
+
+.user-nickname{
+  color: white;
+  
+}
+
+.user-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}

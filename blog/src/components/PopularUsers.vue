@@ -4,8 +4,7 @@
       <div v-for="user in users" :key="user.id" class="user-card">
         <img :src="user.avatar || defaultAvatar" alt="Avatar" class="user-card-img">
         <div class="buttons-profile">
-       
-          <button class="add-show-btn">Show profile</button>
+          <button class="add-show-btn" @click="showUserProfile(user._id)">Show profile</button>
         </div>
       </div>
     </div>
@@ -14,13 +13,19 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 
 const defaultAvatar = new URL('../assets/avatar.jpg', import.meta.url).href;
-
 const users = ref([]);
 let token = localStorage.getItem('token');
 let token1 = token ? JSON.parse(token) : null;
 let tokenValue = token1 ? token1.token : null;
+
+const router = useRouter();
+
+const showUserProfile = (userId) => {
+  router.push({ name: 'UserProfile', params: { id: userId } });
+};
 
 onMounted(async () => {
   try {
@@ -36,9 +41,7 @@ onMounted(async () => {
     }
 
     const data = await response.json();
-    console.log(data)
     users.value = data.sort((a, b) => b.posts.length - a.posts.length).slice(0, 5);
-
   } catch (error) {
     console.error('Error fetching users:', error);
   }

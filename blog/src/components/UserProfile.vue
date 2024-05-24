@@ -12,10 +12,11 @@
       <div class="btn-and-header">
         <h2 class="user-profile-head">{{ user.nickname }}</h2>
               <div class="posts-and-followers">
-        <p class="count-stats"><span class="span-posts">{{ posts }}</span>posts</p>
+        <p class="count-stats"><span class="span-posts">{{ posts }}</span><span class="posts-word">posts</span></p>
         <p class="count-stats"><FollowersCount /><span class="followers-span">followers</span></p>
-        <p class="count-stats"><FollowingCount /><span>0</span>following</p>
+        <p class="count-stats"><FollowingCount /><span class="followers-span">following</span></p>
       </div>
+      
         <button id="followBtn" class="settingButton" @click="showEditCard">Settings</button>
       </div>
     </div>

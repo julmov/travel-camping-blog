@@ -11,11 +11,10 @@
     <div class="profile-info-block">
       <div class="btn-and-header">
         <h2 class="user-profile-head">{{ user.nickname }}</h2>
-         <FollowButton :userId="user._id" id="followBtn"/>
+      
+        <FollowButton v-if="user._id" :userId="user._id" :isFollowing="user.isFollowing" id="followBtn"/>
       </div>
-      <div class="posts-and-followers">
-        
-      </div>
+
       <!-- Include FollowButton component and pass the userId -->
      
     </div>
@@ -60,6 +59,7 @@ const fetchUser = async () => {
       },
     });
     const data = await response.json();
+    // console.log(data);
     user.value = data;
     postsCount.value = Array.isArray(data.posts) ? data.posts.length : 0; // Ensure postsCount is correctly set
     
