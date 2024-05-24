@@ -25,6 +25,7 @@
         <div class="who-posted-date">
           <p>Posted by: {{ userNickname }}</p>
           <p>Created: {{ post.created_at.substring(0, 10) }}</p>
+             <p><LikePost v-if="post._id" :postId="post._id" :isLiked="post.isLiked" /></p>
         </div>
         <font-awesome-icon
           v-if="isUserPost"
@@ -48,6 +49,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useUser } from '../components/CurrentUser.vue'; // Correct path
 import Footer from './Footer.vue'
+import LikePost from "./LikePost.vue";
 
 const { user, fetchUserData } = useUser();
 const post = ref(null);
