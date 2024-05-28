@@ -9,10 +9,12 @@
           <p><router-link to="/posts" class="menu-link">Blog</router-link></p>
           <p><router-link to="/users" class="menu-link">Users</router-link></p>
         </div>
-        <p>
-          <font-awesome-icon :icon="['fas', 'user']" class="icons" />
-          <router-link to="/profile" class="menu-link">Account</router-link>
-        </p>
+        <div class="account-items">
+          <font-awesome-icon :icon="['fas', 'user']" class="icon-avatar" />
+        
+          <router-link to="/profile" class="menu-link" id="account-link"> Account</router-link>
+        
+      </div>
       </div>
     </header>
 
@@ -50,6 +52,34 @@ export default {
 }
 
 .top-container {
-  /* Your top container styles */
+
 }
+
+.icon-avatar{
+  border: 1px solid rgb(31, 31, 31);
+  padding: 5px;
+  border-radius: 50%;
+}
+
+
+.account-items{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+#account-link{
+ margin-right: 40px;
+ font-size: 14px;
+ margin-left: 5px;
+}
+
+#account-link:hover{
+color: aliceblue;
+}
+
 </style>

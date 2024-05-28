@@ -2,8 +2,10 @@
   <div class="upload-card">
     <h3>Upload New Avatar</h3>
     <input type="file" @change="handleFileChange" />
-    <button @click="uploadAvatar">Upload</button>
-    <button @click="$emit('close')">Cancel</button>
+    <div class="buttons-row">
+    <button @click="uploadAvatar" id="upload">Upload</button>
+    <button @click="$emit('close')" id="cancel">Cancel</button>
+    </div>
   </div>
 </template>
 
@@ -64,6 +66,10 @@ export default {
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .upload-card h3 {
@@ -77,6 +83,19 @@ export default {
 
 .upload-card button {
   margin: 5px;
+}
+
+.buttons-row{
+  display: flex;
+  flex-direction: row;
+  width: 170px;
+}
+
+#cancel {
+  background: none;
+  border: 1px solid rgb(162, 162, 162);
+  color: black;
+ 
 }
 
 </style>
