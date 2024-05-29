@@ -11,18 +11,35 @@
         <p>Blog</p>
         <p>Account</p>
       </div>
+      <div class="list-and-icons">
       <div>
         <h3>Contacts</h3>
         <p>514-307-1555</p>
         <p>campventure@gmail.com</p>
-        <div class="footer-icons"> 
-          <font-awesome-icon :icon="['fab', 'instagram']" /> 
-          <font-awesome-icon :icon="['fab', 'facebook']" /> 
-          <font-awesome-icon :icon="['fab', 'youtube']" /> 
-          <font-awesome-icon :icon="['fab', 'tiktok']" /> 
-          <font-awesome-icon :icon="['fab', 'x-twitter']" />  
-        </div>
       </div>
+       <ul class="social-icons-list">
+      <li class="item">
+        <a href="#">
+          <font-awesome-icon :icon="['fab', 'instagram']" class="icon"/>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <font-awesome-icon :icon="['fab', 'linkedin']" class="icon"/>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <font-awesome-icon :icon="['fab', 'youtube']" class="icon"/>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+           <font-awesome-icon :icon="['fab', 'x-twitter']" class="icon"/>
+        </a>
+      </li>
+    </ul>
+    </div>
     </footer>
 </template>
 
@@ -33,5 +50,6 @@ export default {
 </script>
 
 <style>
+@import "../css/social-icons.css"
 
 </style>

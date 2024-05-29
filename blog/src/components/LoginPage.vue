@@ -62,8 +62,6 @@ const handleSubmit = async () => {
         JSON.stringify({ token: data.access_token })
       );
       localStorage.setItem("email", JSON.stringify({ email: data.login }));
-      console.log("Email saved to localStorage:", data.login);
-      console.log("Token saved to localStorage:", data.access_token);
 
       // Redirect to another route using Vue Router
       router.push("/home");

@@ -2,8 +2,10 @@
   <div class="upload-card">
     <h3>Upload New Background</h3>
     <input type="file" @change="handleFileChange" />
+    <div class="buttons-row">
     <button @click="uploadBackground">Upload</button>
-    <button @click="$emit('close')">Cancel</button>
+    <button @click="$emit('close')" id="cancel">Cancel</button>
+    </div>
   </div>
 </template>
 

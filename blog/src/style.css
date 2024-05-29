@@ -51,6 +51,9 @@ margin-top: 0;
   text-decoration: none;
   color: black;
 }
+.menu-link:hover{
+  color: aliceblue;
+}
 
 footer{
   padding-top: 50px;

@@ -30,7 +30,6 @@ export default {
         }
 
         const data = await response.json();
-        console.log(data);
         followingCount.value = data.length; // Correct assignment to reactive variable
         followingUserIds.value = data.map(user => user._id); // Extract user IDs
       } catch (error) {

@@ -27,8 +27,7 @@ export default {
         }
 
         const data = await response.json();
-        console.log(data);
-        
+      
         // Ensure that followers.value is set to the length of the followers array
         followers.value = Array.isArray(data) ? data.length : 0;
       } catch (error) {

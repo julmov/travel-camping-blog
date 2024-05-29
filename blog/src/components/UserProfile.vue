@@ -106,11 +106,9 @@ export default {
         }
 
         const data = await response.json();
-        console.log(data);
         this.user = data;
         this.posts = data.posts.length;
         localStorage.setItem('_id', JSON.stringify({ userId: data._id }));
-        console.log('id saved to localStorage:', data._id);
         this.userId = data._id; // Set userId here
       } catch (error) {
         console.error('Error fetching user data:', error);

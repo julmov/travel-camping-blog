@@ -28,7 +28,25 @@
   justify-content: space-between;
   margin-left: 25px;
   margin-right: 25px;
+  overflow: scroll;
+  height: fit-content;
 }
+
+/* Hide the scrollbar */
+.user-gallery::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar width */
+}
+
+/* Optionally, you can style scrollbar track and handle */
+.user-gallery::-webkit-scrollbar-track {
+  background: transparent; /* Change scrollbar track color */
+}
+
+.user-gallery::-webkit-scrollbar-thumb {
+  background: #f5f0f089; /* Change scrollbar handle color */
+  height: 2px;
+}
+
 .buttons-profile{
   display:flex;
   flex-direction: row;

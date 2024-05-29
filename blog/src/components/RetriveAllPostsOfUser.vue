@@ -44,7 +44,6 @@ const fetchUserPosts = async () => {
       },
     });
     const data = await response.json();
-    console.log(data); // Log the entire response to understand its structure
     posts.value = data || []; // Assuming the API returns { posts: [] }
   } catch (error) {
     console.error('Error fetching user posts:', error);

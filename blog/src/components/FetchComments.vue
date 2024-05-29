@@ -79,6 +79,7 @@ onMounted(async () => {
 .comments-list {
   list-style-type: none;
   padding: 0;
+  
 }
 
 .comment-box {
