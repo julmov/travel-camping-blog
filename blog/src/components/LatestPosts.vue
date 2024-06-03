@@ -34,7 +34,7 @@ const fetchPosts = async () => {
     }
 
     const data = await response.json();
-    posts.value = data.slice(0, 3); // Display only the first three posts
+    posts.value = data.slice().reverse().slice(0, 3); // Reverse the array and then slice it to get the last three posts
   } catch (error) {
     console.error('Error fetching posts:', error);
   }
@@ -46,6 +46,8 @@ const goToPostDetail = (postId) => {
 
 onMounted(fetchPosts);
 </script>
+
+
 
 <style scoped>
 @import '../css/HomePage.css';

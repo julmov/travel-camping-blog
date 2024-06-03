@@ -24,11 +24,11 @@
 <script setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import router from "../router";
 
 const username = ref('');
 const email = ref('');
 const password = ref('');
+const router = useRouter();
 
 const registerUser = async () => {
   try {
@@ -48,8 +48,7 @@ const registerUser = async () => {
     console.log(data); // Handle the response data as needed
 
     if (response.ok) {
-      const router = useRouter();
-      alert("Account successfully created")
+      alert("Account successfully created");
       router.push('/home'); // Redirect to /home route after successful registration
     } else {
       console.error('Registration failed:', data); // Handle registration error
