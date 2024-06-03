@@ -9,7 +9,7 @@
         @click="toggleMenu(comment)"
       >
         <div class="user-details">
-          <span class="comment-nickname">{{ comment.userId.nickname }}</span>
+          <span class="comment-nickname">{{ comment.userId?.nickname || 'Deleted User' }}</span>
           <span class="post-content">{{ comment.content }}</span>
           <EditOrDeleteComments
             :comment="comment"
@@ -40,7 +40,7 @@ const tokenValue = token ? JSON.parse(token).token : null;
 const fetchComments = async () => {
   try {
     const response = await fetch(
-      import.meta.env.VITE_API_LINK +`/comments/all/post/${postId}`,
+      import.meta.env.VITE_API_LINK + `/comments/all/post/${postId}`,
       {
         method: 'GET',
         headers: {
@@ -49,7 +49,11 @@ const fetchComments = async () => {
       }
     );
     const data = await response.json();
-    comments.value = data.map(comment => ({ ...comment, showMenu: false }));
+    comments.value = data.map(comment => ({
+      ...comment,
+      userId: comment.userId || { nickname: 'Deleted User' }, // Handle null userId
+      showMenu: false
+    }));
   } catch (error) {
     console.error('Error fetching comments:', error);
   }
@@ -57,7 +61,7 @@ const fetchComments = async () => {
 
 const toggleMenu = (comment) => {
   comments.value.forEach(c => {
-    c.showMenu = (c === comment) && (c.userId.nickname === user.value.nickname);
+    c.showMenu = (c === comment) && (c.userId?.nickname === user.value.nickname);
   });
 };
 
