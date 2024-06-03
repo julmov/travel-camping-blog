@@ -3,7 +3,15 @@
     <ul v-if="posts.length > 0">
       <li v-for="post in posts" :key="post._id" class="user-post" @click="goToPostDetail(post._id)">
         <h3>{{ post.title }}</h3>
-        <img :src="post.image" alt="Post Image" class="post-image">
+        
+                  <img
+          v-if="post.image.match(/\.(jpg|jpeg|png|gif)$/i)"
+          :src="post.image"
+          alt="Post Image"
+          class="post-image"
+        />
+
+        <img v-else :src="video" alt="Post Image" class="post-image">
         <p>{{ post.content }}</p>
       </li>
     </ul>
@@ -16,7 +24,7 @@
 import { ref, onMounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useRoute } from 'vue-router';
-
+import video from '../assets/videogreen.jpg'
 
 const router = useRouter();
 const posts = ref([]);
