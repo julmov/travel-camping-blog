@@ -49,7 +49,7 @@
         <div class="profile-name">
           <h2>{{ user.nickname }}</h2>
           <div class="profile-bio">
-            {{ user.description }}
+            {{ user.description ? user.description.slice(0, 105) + "..." : '' }}
           </div>
         </div>
       </div>
