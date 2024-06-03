@@ -7,13 +7,14 @@
         <button type="submit" class="submit-comment-button">Submit</button>
       </div>
       <!-- Add @select listener to EmojiPicker -->
+      <EmojiPicker v-if="showEmojiPicker" :native="true" @select="insertEmoji"  class="emojipicker"/>
     </form>
   </div>
-   <EmojiPicker v-if="showEmojiPicker" :native="true" @select="insertEmoji"  class="emojipicker"/>
+   
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import EmojiPicker from 'vue3-emoji-picker';
 import 'vue3-emoji-picker/css';
@@ -57,7 +58,7 @@ const submitComment = async () => {
       console.log('Comment created successfully:', data);
       // Navigate to a different page or clear the form after successful comment creation
       router.push(`/post/${postId}`); // Example navigation
-      window.location.reload(); 
+      window.location.reload();
     } else {
       console.error('Error creating comment:', response.statusText);
     }
@@ -65,6 +66,21 @@ const submitComment = async () => {
     console.error('Error creating comment:', error);
   }
 };
+
+// Close emoji picker when clicking outside
+const onClickOutside = (event) => {
+  if (!event.target.closest('.emoji-picker') && !event.target.closest('.icon-smile')) {
+    showEmojiPicker.value = false;
+  }
+};
+
+onMounted(() => {
+  window.addEventListener('click', onClickOutside);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('click', onClickOutside);
+});
 </script>
 
 
@@ -151,8 +167,9 @@ const submitComment = async () => {
 }
 
 .emojipicker{
-position: absolute;
-right: 80px;
-top: 850px;
+  position: absolute;
+
+  right: 40px; /* Adjust right value if needed */
+  z-index: 10;
 }
 </style>
