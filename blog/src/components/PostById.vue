@@ -109,7 +109,7 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-img {
+img, video {
   width: 400px;
   height: auto;
 }
