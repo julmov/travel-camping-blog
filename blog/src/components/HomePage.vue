@@ -90,7 +90,7 @@ import PopularUsers from './PopularUsers.vue'
 .link-know-more{
   text-decoration: none;
   font-size: 16px;
-  color: white;
+  color: rgb(11, 11, 11);
 }
 
 </style>

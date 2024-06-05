@@ -49,9 +49,8 @@ button {
 }
 
 button {
-  background: rgb(38,77,64);
-  background: linear-gradient(90deg, rgba(38,77,64,1) 5%, rgba(104,196,105,1) 57%, rgba(77,136,116,1) 87%);
-  color: white;
+  background-color: aliceblue;
+ 
   cursor: pointer;
   width: 50%; /* Set button width to 50% of its container */
   max-width: 200px;
