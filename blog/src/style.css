@@ -49,11 +49,18 @@ margin-top: 0;
 
 .menu-link{
   text-decoration: none;
-  color: black;
+   padding: 0.5rem 0.75rem;
+   position: relative;
+   transition: color 0.25s;
+   color: black;
+   font-weight: 500;
+   letter-spacing: 0.2em;
 }
 .menu-link:hover{
-  color: aliceblue;
+  color: rgb(58, 59, 59);
 }
+
+
 
 footer{
   padding-top: 50px;

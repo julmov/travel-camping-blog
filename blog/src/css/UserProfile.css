@@ -129,6 +129,8 @@ margin-bottom: 10px;
 
 .upload-card button {
   margin: 5px;
+    background-color: rgb(9, 56, 40);
+  color:antiquewhite;
 }
 
 #background{
