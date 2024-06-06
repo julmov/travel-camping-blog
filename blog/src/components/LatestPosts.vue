@@ -1,7 +1,14 @@
 <template>
   <div class="popular-posts">
     <div v-for="post in posts" :key="post._id" class="post-box" @click="goToPostDetail(post._id)">
-      <img :src="post.image" alt="landscape" class="post-pic">
+               <img
+          v-if="post.image.match(/\.(jpg|jpeg|png|gif)$/i)"
+          :src="post.image"
+          alt="Post Image"
+          class="post-pic"
+        />
+
+        <img v-else :src="video" alt="Post Image" class="post-pic">
       <h3 class="latest-posts-headers">{{ post.title }}</h3>
       <p>{{ post.content.substring(0, 150) + '...'}}</p>
       <p>_____________________________________________</p>
@@ -13,6 +20,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import video from '../assets/videogreen.jpg'
 
 const posts = ref([]);
 const router = useRouter();

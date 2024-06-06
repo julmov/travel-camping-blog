@@ -89,10 +89,18 @@ const createPost = async () => {
   max-width: 600px;
   width: 100%;
   margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-group {
   margin-bottom: 15px;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-group input,
@@ -101,6 +109,10 @@ const createPost = async () => {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-group textarea {
@@ -118,8 +130,8 @@ const createPost = async () => {
 }
 
 button {
-  background-color: #4CAF50;
-  color: white;
+ background-color: rgb(9, 56, 40);
+  color:antiquewhite;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -127,6 +139,7 @@ button {
 }
 
 button:hover {
-  background-color: #45a049;
+   background-color: rgba(9, 56, 40, 0.87);
+  color:antiquewhite;
 }
 </style>

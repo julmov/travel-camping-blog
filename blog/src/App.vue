@@ -79,7 +79,7 @@ export default {
 }
 
 #account-link:hover{
-color: aliceblue;
+color: rgb(65, 66, 66);
 }
 
 </style>

@@ -141,6 +141,10 @@ margin-left: 120px;
 background-color: aliceblue;
 }
 
+.know-more:hover{
+  background-color: rgba(240, 248, 255, 0.541);
+}
+
 .first-and-third-img{
   width: 50vw;
   height: 300px;

@@ -108,15 +108,16 @@ onBeforeUnmount(() => {
 
 .submit-comment-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: rgb(9, 56, 40);
+  color:antiquewhite;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .submit-comment-button:hover {
-  background-color: #45a049;
+  background-color: rgba(9, 56, 40, 0.742);
+  color:antiquewhite;
 }
 
 .input-with-icon {

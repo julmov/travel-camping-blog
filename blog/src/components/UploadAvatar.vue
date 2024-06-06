@@ -82,6 +82,8 @@ export default {
 }
 
 .upload-card button {
+  background-color: rgb(9, 56, 40);
+  color:antiquewhite;
   margin: 5px;
 }
 
