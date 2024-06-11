@@ -42,7 +42,9 @@ const fetchPosts = async () => {
     }
 
     const data = await response.json();
-    posts.value = data.slice().reverse().slice(0, 3); // Reverse the array and then slice it to get the last three posts
+    posts.value = data
+      .sort((a, b) => b.likes.length - a.likes.length)
+      .slice(0, 3);
   } catch (error) {
     console.error('Error fetching posts:', error);
   }
