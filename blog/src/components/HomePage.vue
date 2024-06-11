@@ -67,7 +67,7 @@
       </div>
       <div class="users-reviews">
      
-        <h2 class="blog-headers">Latest Posts</h2>
+        <h2 class="blog-headers">Popular Posts</h2>
         
         <LatestPosts />
         <h2 class="blog-headers">Popular Users</h2>

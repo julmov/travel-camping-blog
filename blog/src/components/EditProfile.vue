@@ -8,7 +8,7 @@
       <textarea id="description" v-model="description"></textarea>
     </div>
     <div class="buttons">
-      <button @click="saveChanges">Save Changes</button>
+      <button @click="saveChanges" class="save-changes">Save Changes</button>
       <button @click="confirmDelete" id="cancel" class="delete">Delete Account</button>
       <button @click="$emit('close')" id="cancel">Cancel</button>
     </div>
@@ -155,5 +155,10 @@ export default {
 
  .delete{
 background-color: red;
+ }
+
+ .save-changes{
+  background-color: rgb(80 104 80); 
+  color:azure;
  }
 </style>

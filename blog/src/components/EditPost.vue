@@ -146,7 +146,8 @@ form {
   width: 100px; /* Adjusted button width */
   padding: 10px;
   color: #fff;
-  background-color: #007bff;
+   background-color: rgb(80 104 80); 
+  color:azure;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -168,7 +169,9 @@ form {
 }
 
 .btn-cancel {
-  background-color: #6c757d; /* Gray color for cancel button */
+  background-color:white;
+  border: 1px solid rgb(132, 132, 132);
+  color: black; /* Gray color for cancel button */
 }
 
 .formEditPost{
